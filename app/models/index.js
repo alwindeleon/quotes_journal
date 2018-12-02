@@ -4,6 +4,7 @@ const Sequelize = require('sequelize');
 const config = require('../../config/config');
 const db = {};
 
+console.log(config.db);
 const sequelize = new Sequelize(config.db);
 
 fs.readdirSync(__dirname)
