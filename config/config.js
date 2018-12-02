@@ -27,7 +27,7 @@ const config = {
       name: 'quotes-journal'
     },
     port: process.env.PORT || 3000,
-    db: 'process.env.CLEARDB_DATABASE_URL || mysql://localhost/quotes_journal'
+    db: process.env.CLEARDB_DATABASE_URL || 'mysql://localhost/quotes_journal'
   }
 };
 
