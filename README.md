@@ -6,7 +6,7 @@ An awesome public quotes journal!
 
 Install NodeJS v10.13.0
 
-Install MySQL
+Install 5.5.56-log MySQL Community Server
 
 Configure the database configuration in config/config.js to sync with the installed databaswe
 
