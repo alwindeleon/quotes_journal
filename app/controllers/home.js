@@ -42,7 +42,7 @@ router.get('/dashboard', auth, (req, res, next) => {
 	} else if (req.session.user.admin) {
 		return res.redirect('/admin')
 	}
-	db.Quote.findAll({user_id: req.session.user.email}).then( quotes => {
+	db.Quote.findAll({where:{user_id: req.session.user.email}}).then( quotes => {
 		return res.render('dashboard',{
 			user: req.session.user,
 			quotes: quotes.reverse()
