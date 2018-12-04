@@ -3,19 +3,21 @@
 
 module.exports = (sequelize, DataTypes) => {
 
-  const Article = sequelize.define('Quote', {
-    title: DataTypes.STRING,
-    url: DataTypes.STRING,
-    text: DataTypes.STRING
+  const Quote = sequelize.define('Quote', {
+    body: DataTypes.STRING,
+    author: DataTypes.STRING,
+    curated: DataTypes.BOOLEAN,
+    public: DataTypes.BOOLEAN,
+    likes: DataTypes.INTEGER,
+    user_id: DataTypes.STRING
   }, {
     classMethods: {
       associate: (models) => {
-        // example on how to add relations
-        // Article.hasMany(models.Comments);
+        Quote.hasMany(models.Comment);
       }
     }
   });
 
-  return Article;
+  return Quote;
 };
 

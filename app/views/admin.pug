@@ -1,0 +1,60 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width')
+    title= title
+    block css
+      link(rel='stylesheet', href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.css")
+      link(rel='stylesheet', href='/css/style.css')
+    block js
+      script(defer='' src='https://use.fontawesome.com/releases/v5.3.1/js/all.js')
+      script(src='https://code.jquery.com/jquery-3.3.1.min.js' integrity='sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=' crossorigin='anonymous')
+      if ENV_DEVELOPMENT
+        script(src='http://localhost:35729/livereload.js')
+  body
+    nav.navbar.is-light(role='navigation' aria-label='main navigation')
+      .navbar-brand
+        a.navbar-item(href='/dashboard')
+          h1 QUOTES JOURNAL
+      #navbarBasicExample.navbar-menu
+        // .navbar-start
+        //   a.navbar-item
+        //     | Documentation
+        .navbar-end
+          .navbar-item
+            .buttons
+             a.button.is-light(href="/logout")
+                | Log out
+
+    .columns.is-centered
+      .column.is-half
+        h1.is-size-1.has-text-info  Public Quotes!
+ 
+        form
+          each quote in quotes
+            article.media
+              figure.media-left
+                p.image.is-64x64
+                  img(src='https://bulma.io/images/placeholders/128x128.png')
+              .media-content
+                .content
+                  p
+                    strong=user.fullname
+                    small=user.email
+                    br
+                    |         #{quote.body}
+                    br
+                    small -#{quote.author}
+                  p
+                    a.button.is-danger(href='/delete/'+quote.id) Delete!
+                nav.level.is-mobile
+                  .level-left
+                    a.level-item(href='/quote/'+quote.id)
+                      span.icon.is-small
+                        i.fas.fa-reply
+
+          else
+            h3.is-large NO QUOTES YET!
+
+

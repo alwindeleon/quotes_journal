@@ -3,10 +3,13 @@
 
 module.exports = (sequelize, DataTypes) => {
 
-  const Article = sequelize.define('User', {
-    title: DataTypes.STRING,
-    url: DataTypes.STRING,
-    text: DataTypes.STRING
+  const User = sequelize.define('User', {
+    username: { type: DataTypes.STRING, unique: true},
+    email: { type: DataTypes.STRING, unique: true},
+    fullname: DataTypes.STRING,
+    password: DataTypes.STRING,
+    curator: DataTypes.BOOLEAN,
+    admin: DataTypes.BOOLEAN
   }, {
     classMethods: {
       associate: (models) => {
@@ -16,6 +19,6 @@ module.exports = (sequelize, DataTypes) => {
     }
   });
 
-  return Article;
+  return User;
 };
 

@@ -4,9 +4,9 @@
 module.exports = (sequelize, DataTypes) => {
 
   const Article = sequelize.define('Comment', {
-    title: DataTypes.STRING,
-    url: DataTypes.STRING,
-    text: DataTypes.STRING
+    body: DataTypes.STRING,
+    user: DataTypes.STRING,
+    quote_id: DataTypes.STRING
   }, {
     classMethods: {
       associate: (models) => {
